@@ -20,10 +20,7 @@ namespace RemoteRebootClient
         {
             try
             {
-                GetGuid(); return;
-
-
-                   var hostname = ConfigurationManager.AppSettings["Hostname"].ToString();
+                var hostname = ConfigurationManager.AppSettings["Hostname"].ToString();
                 var port = int.Parse(ConfigurationManager.AppSettings["ServicePort"]);
                 var token = ConfigurationManager.AppSettings["Token"].ToString();
                 if (string.IsNullOrWhiteSpace(token))
