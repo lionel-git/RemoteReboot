@@ -24,6 +24,8 @@ namespace RemoteReboot
 
         private volatile bool _running = true;
 
+        private Thread _thread;
+
         public bool ConsoleMode { get; set; }
 
         [DllImport("ShutdownWrapper.dll", CharSet = CharSet.Unicode)]
@@ -85,11 +87,13 @@ namespace RemoteReboot
         {
             _logger.Info("=====================================================");
             InitConfig(args);
-            MainLoop();
+            _thread = new Thread(MainLoop);
+            _thread.Start();
         }
 
         public void OnStop()
         {
+            _thread.Abort();
             _logger.Info("Exiting On Stop");
         }
     }
