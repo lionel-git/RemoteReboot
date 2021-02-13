@@ -30,7 +30,7 @@ bool MySystemReboot(bool force_apps_closed, bool dry_run)
     if (!dry_run)
     {
         // https://docs.microsoft.com/en-us/windows/win32/api/winreg/nf-winreg-initiatesystemshutdownexa
-        const char* message = "Test Reboot";
+        const char* message = "Remote Reboot: reboot in 10s";
         DWORD reason = SHTDN_REASON_MAJOR_OPERATINGSYSTEM | SHTDN_REASON_MINOR_UPGRADE | SHTDN_REASON_FLAG_PLANNED;
         return InitiateSystemShutdownEx(nullptr, (char*)message, 10, force_apps_closed, true, reason);
     }
