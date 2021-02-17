@@ -47,7 +47,7 @@ namespace RemoteReboot
             tcpListener.Start();            
             while (_running)
             {
-                using (var socket = tcpListener.AcceptSocket())
+                using (var socket = tcpListener.AcceptSocket2())
                 {
                     _logger.Info($" Received connection from {socket.RemoteEndPoint}");
                     var buffer = new byte[1024];
